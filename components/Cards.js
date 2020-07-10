@@ -28,13 +28,30 @@ const cardsContainer = document.querySelector('div.cards-container')
 axios.get('https://lambda-times-backend.herokuapp.com/articles')
     .then(response => {
         console.log(response.data.articles)
-        cardsContainer.appendChild(articlesMaker(response.data.articles.javascript[0]))
+        //loop through and add all articles of javascript
+        for (let i = 0; i < response.data.articles.javascript.length; i++){
+            cardsContainer.appendChild(articlesMaker(response.data.articles.javascript[i]))
+        }
+        //loop through and add all articles of javascript
+        for (let i = 0; i < response.data.articles.bootstrap.length; i++){
+            cardsContainer.appendChild(articlesMaker(response.data.articles.bootstrap[i]))
+        }
+        //
+        const cardSelector = document.querySelectorAll('.card')
+        const cardHeadline = document
+
+        cardSelector.forEach(card =>{
+            card.addEventListener('click', () => {
+            console.log("headline")
+})
+})
     })
     .catch(err => {
         console.log('error!')
     })
 
 
+//article maker for single object (not array of objects per instructions)
     function articlesMaker (articleObj){
 
         //creating element
@@ -62,7 +79,8 @@ axios.get('https://lambda-times-backend.herokuapp.com/articles')
         imgContainer.appendChild(authorImg)
         author.appendChild(authorName)
 
-        console.log(card)
-
         return card
     }
+
+    //event listener
+
