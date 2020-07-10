@@ -39,8 +39,6 @@ function Header() {
     header.appendChild(title)
     header.appendChild(temp)
 
-    console.log(header)
-
     return header
 
 }
